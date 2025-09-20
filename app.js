@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config();
 const productRoutes = require('./routes/productRoutes.js');
  
 const app = express();
@@ -17,7 +18,8 @@ app.get('/', (req,res) => {
 });
 
 //connecting to the mongodb database
-mongoose.connect("mongodb+srv://user:user1234@nodeapi.w5esamj.mongodb.net/?retryWrites=true&w=majority&appName=NodeAPI")
+
+mongoose.connect(process.env.MONGODB_URI)
 
 .then(() => {
     console.log("Connected to the database")
